@@ -23,7 +23,7 @@ meta = {
 }
 
 ## Networking Service
-networking_service = {
+networking_module = {
   enabled = true
 
   vpc = {
@@ -44,5 +44,27 @@ networking_service = {
     enabled            = true
     single_nat_gateway = false
     reuse_nat_ips      = true
+  }
+}
+
+
+## APPS
+apps = {
+  wordpress = {
+
+    enabled = true
+
+    autoscaling = {
+      minimum = 1
+      desired = 1
+      maximum = 1
+    }
+
+    ec2 = {
+      ami_id        = "ami-00aa4671cbf840d82"
+      instance_size = "t3.micro"
+      key_pair      = "wordpress"
+    }
+
   }
 }

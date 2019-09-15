@@ -1,9 +1,9 @@
 #############################################################
 ##
-## This app file contains the Main installation flows for 
+## This app file contains the Networking installation flows for 
 ## AWS-Terraform-Workshop
 ## 
-## @package /aws-terraform-workshop
+## @package /aws-terraform-workshop/apps/wordpress/networking/
 ## @year 2019
 ## @author Muhammet Arslan <muhammet.arsln@gmail.com>
 ## @url https://medium.com/muhammet-arslan
@@ -11,30 +11,15 @@
 ##
 #############################################################
 
-provider "aws" {
-  region = "eu-central-1"
-}
-
-## Networking
-module "networking" {
-  source = "./modules/networking/"
+## Security Group
+module "security_group" {
+  source = "./security_group"
 
   ## Networking Service
   networking_module = var.networking_module
 
-  ## Meta
-  meta = var.meta
-}
-
-## APPS
-module "apps" {
-  source = "./apps"
-
-  ## Networking Service
-  networking_module = module.networking
-
-  ## Apps
-  apps = var.apps
+  ## Application Config
+  app_config = var.app_config
 
   ## Meta
   meta = var.meta

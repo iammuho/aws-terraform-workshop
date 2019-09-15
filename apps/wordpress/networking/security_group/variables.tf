@@ -1,9 +1,9 @@
 #############################################################
 ##
-## This app file contains the variables of Main installation flows for 
+## This app file contains the variables of Security Group installation flows for 
 ## AWS-Terraform-Workshop
 ## 
-## @package /aws-terraform-workshop
+## @package /aws-terraform-workshop/apps/wordpress/networking/security_group
 ## @year 2019
 ## @author Muhammet Arslan <muhammet.arsln@gmail.com>
 ## @url https://medium.com/muhammet-arslan
@@ -24,7 +24,7 @@ variable "networking_module" {
 }
 
 ## Apps
-variable "apps" {
-  description = "Apps aims to hold data related with will be provisioned apps"
+variable "app_config" {
+  description = "App Config aims to hold data related with will be provisioned apps"
   default     = {}
 }

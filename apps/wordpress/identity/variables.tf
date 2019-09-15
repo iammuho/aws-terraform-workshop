@@ -1,9 +1,9 @@
 #############################################################
 ##
-## This app file contains the variables of Main installation flows for 
+## This app file contains the variables of Identity installation flows for 
 ## AWS-Terraform-Workshop
 ## 
-## @package /aws-terraform-workshop
+## @package /aws-terraform-workshop/apps/wordpress/identity/
 ## @year 2019
 ## @author Muhammet Arslan <muhammet.arsln@gmail.com>
 ## @url https://medium.com/muhammet-arslan
@@ -17,14 +17,8 @@ variable "meta" {
   default     = {}
 }
 
-## Networking Service
-variable "networking_module" {
-  description = "Networking service aims to hold data related with networking services"
-  default     = {}
-}
-
 ## Apps
-variable "apps" {
-  description = "Apps aims to hold data related with will be provisioned apps"
+variable "app_config" {
+  description = "App Config aims to hold data related with will be provisioned apps"
   default     = {}
 }

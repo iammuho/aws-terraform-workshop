@@ -1,9 +1,9 @@
 #############################################################
 ##
-## This app file contains the variables of Main installation flows for 
+## This app file contains the Variables of Apps installation flows for 
 ## AWS-Terraform-Workshop
 ## 
-## @package /aws-terraform-workshop
+## @package /aws-terraform-workshop/apps
 ## @year 2019
 ## @author Muhammet Arslan <muhammet.arsln@gmail.com>
 ## @url https://medium.com/muhammet-arslan

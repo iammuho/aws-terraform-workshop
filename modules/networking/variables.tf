@@ -18,7 +18,7 @@ variable "meta" {
 }
 
 ## Networking Service
-variable "networking_service" {
+variable "networking_module" {
   description = "Networking service aims to hold data related with networking services"
   default     = {}
 }

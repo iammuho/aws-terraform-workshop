@@ -1,15 +1,21 @@
 #############################################################
 ##
-## This app file contains the variables of Main installation flows for 
+## This app file contains the variables of Compute installation flows for 
 ## AWS-Terraform-Workshop
 ## 
-## @package /aws-terraform-workshop
+## @package /aws-terraform-workshop/apps/wordpress/compute
 ## @year 2019
 ## @author Muhammet Arslan <muhammet.arsln@gmail.com>
 ## @url https://medium.com/muhammet-arslan
 ## @repo https://github.com/geass/aws-terraform-workshop
 ##
 #############################################################
+
+## Toggle
+variable "enabled" {
+  description = "If the application is enabled or not?"
+  default     = false
+}
 
 ## Meta
 variable "meta" {
@@ -24,7 +30,7 @@ variable "networking_module" {
 }
 
 ## Apps
-variable "apps" {
-  description = "Apps aims to hold data related with will be provisioned apps"
+variable "app_config" {
+  description = "App Config aims to hold data related with will be provisioned apps"
   default     = {}
 }
