@@ -15,8 +15,8 @@
 ### Project Meta
 meta = {
   environment  = "staging"
-  project_name = "AWS Terraform Workshop"
-  project_slug = "aws-terraform-workshop"
+  project_name = "Terraform Workshop"
+  project_slug = "terraform"
   project_tags = {
     "Developer" : "Muhammet Arslan",
   }
@@ -64,6 +64,17 @@ apps = {
       ami_id        = "ami-00aa4671cbf840d82"
       instance_size = "t3.micro"
       key_pair      = "wordpress"
+    }
+
+    rds = {
+      allocated_storage = 100
+      storage_type      = "gp2"
+      engine            = "mysql"
+      engine_version    = "5.7"
+      instance_class    = "db.t2.micro"
+      multi_az          = true
+      database_name     = "wordpress"
+      database_username = "wordpress"
     }
 
   }

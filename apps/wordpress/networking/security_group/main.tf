@@ -53,6 +53,21 @@ resource "aws_security_group" "wordpress_instance" {
   })
 }
 
+
+resource "aws_security_group" "wordpress_database" {
+  count = "${var.app_config.enabled ? 1 : 0}"
+
+  name        = "${var.meta.project_slug}-${var.meta.environment}-wordpress-database-sg"
+  description = "Allow http traffic from instance"
+  vpc_id      = "${var.networking_module.vpc_id}"
+
+  tags = merge(var.meta.project_tags, {
+    "Name" : "${var.meta.project_slug}-${var.meta.environment}-wordpress-database-sg"
+    "Environment" : var.meta.environment
+    "Project" : var.meta.project_name
+  })
+}
+
 resource "aws_security_group_rule" "wordpress-instance-from-load-balancer" {
   count = "${var.app_config.enabled ? 1 : 0}"
 
@@ -78,6 +93,20 @@ resource "aws_security_group_rule" "wordpress-load-balancer-to-instance" {
   protocol  = "tcp"
 
   security_group_id        = aws_security_group.wordpress_elb[count.index].id
+  source_security_group_id = aws_security_group.wordpress_instance[count.index].id
+}
+
+resource "aws_security_group_rule" "wordpress-database-from-instance" {
+  count = "${var.app_config.enabled ? 1 : 0}"
+
+  description = "Accept traffic from instance security group"
+
+  type      = "ingress"
+  from_port = 3306
+  to_port   = 3306
+  protocol  = "tcp"
+
+  security_group_id        = aws_security_group.wordpress_database[count.index].id
   source_security_group_id = aws_security_group.wordpress_instance[count.index].id
 }
 

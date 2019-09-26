@@ -36,6 +36,26 @@ module "identity" {
   meta = var.meta
 }
 
+## Storage
+module "storage" {
+  source = "./storage"
+
+  ## Networking Service
+  networking_module = var.networking_module
+
+  ## Application Config
+  enabled = var.app_config.enabled
+
+  app_config = merge(var.app_config, {
+    "identity" : module.identity
+    "networking" : module.networking
+  })
+
+  ## Meta
+  meta = var.meta
+}
+
+
 ## Compute
 module "compute" {
   source = "./compute"
